@@ -1,0 +1,5 @@
+<apex:page id="page" controller="ip"> 
+         
+      {!ipstring}
+
+</apex:page>

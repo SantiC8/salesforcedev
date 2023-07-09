@@ -1,0 +1,15 @@
+<apex:page standardController="Contact" extensions="VerifyEmailCtrl" action="{!doSomeDMLStuff}">
+    
+    <apex:pageBlock >
+       <apex:pageBlockSection rendered="{!modificado}">
+            <div class="slds-media__body">
+                <p class="slds-page-header__title slds-truncate slds-align-middle" title="Email">Verificado</p>
+           </div>
+        </apex:pageBlockSection>
+        <apex:pageBlockSection rendered="{!!modificado}">
+            <div class="slds-media__body">
+                <p class="slds-page-header__title slds-truncate slds-align-middle" title="Email">No Verificado</p>
+           </div>
+        </apex:pageBlockSection>
+    </apex:pageBlock>   
+</apex:page>

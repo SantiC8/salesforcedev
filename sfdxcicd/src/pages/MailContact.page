@@ -1,0 +1,39 @@
+<apex:page standardController="Contact" extensions="CreateContactCtrl" tabStyle="Contact">
+
+<apex:form id="CreateContactForm"> 
+    <apex:pageBlock id="ModifyContactBlock">
+        <apex:pageBlockButtons location="bottom">
+            <apex:commandbutton id="cancel_button" value="Cancelar" action="{!cancelar}" immediate="true"/>
+            <apex:commandbutton id="save_button" value="Guardar" action="{!saveUpdate}"/>
+            <apex:actionFunction action="{!suministroCheck}" name="chequearSuministro" immediate="true"></apex:actionFunction>
+        </apex:pageBlockButtons>
+       <apex:pageBlockSection title="Informacion General">
+		<apex:pageBlockSectionItem >
+          <apex:outputLabel value="{!$ObjectType.Contact.fields.firstname.label}"/>
+          <apex:inputField id="firstname" value="{!contacto.firstname}" required="true"/>
+        </apex:pageBlockSectionItem>
+        <apex:pageBlockSectionItem >
+           <apex:outputLabel value="{!$ObjectType.Contact.fields.lastname.label}"/>
+           <apex:inputField id="lastname" value="{!contacto.lastname}" required="true"/>
+        </apex:pageBlockSectionItem>
+        <apex:pageBlockSectionItem rendered="{!!chkBoxAgree}">
+            <apex:outputLabel value="{!$ObjectType.Contact.fields.email.label}"/>
+            <apex:inputField id="email" value="{!contacto.email}" required="true"/>
+        </apex:pageBlockSectionItem>
+           <apex:pageBlockSectionItem rendered="{!chkBoxAgree}">
+            <apex:outputLabel value="{!$ObjectType.Contact.fields.email.label}"/>
+            <apex:inputField id="email" value="{!contacto.email}" html-disabled="true"/>
+        </apex:pageBlockSectionItem>
+            <apex:inputCheckbox label="Mail Default" value="{!chkBoxAgree}" onchange="checkSuministro()"/>
+       </apex:pageBlockSection>        
+    </apex:pageBlock>
+</apex:form>
+    <script>
+    
+    function checkSuministro(){
+        chequearSuministro();
+        console.log('ejecuto suministrocheck()');  
+        
+    }
+    </script>
+</apex:page>

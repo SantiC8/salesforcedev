@@ -1,0 +1,12 @@
+image:
+  name: mklinski/salesforce
+pipelines:
+  branches:
+    feature/*:
+      - step:
+          script:
+            - ant -buildfile build/build.xml deployEmptyCheckOnly -Dsfdc.username=$SFDC_USERNAME -Dsfdc.password=$SFDC_PASS$SFDC_TOKEN -Dsfdc.serverurl=https://$SFDC_SERVERURL
+    master:
+      - step:
+          script:         
+            - ant -buildfile build/build.xml deployCode -Dsfdc.username=$SFDC_USERNAME -Dsfdc.password=$SFDC_PASS$SFDC_TOKEN -Dsfdc.serverurl=https://$SFDC_SERVERURL
